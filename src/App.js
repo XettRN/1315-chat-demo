@@ -3,7 +3,6 @@ import './App.css';
 
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, orderBy, limit, query, addDoc, serverTimestamp } from '@firebase/firestore';
-import { getAnalytics } from 'firebase/analytics'
 
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
@@ -22,7 +21,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const firestore = getFirestore(app);
-const analytics = getAnalytics(app);
 
 function App() {
 
@@ -134,7 +132,9 @@ function ChatMessage(props) {
   return (
     <>
       <div className={`message ${messageClass}`}>
-        <img src={photoURL || 'https://www.tenforums.com/geek/gars/images/2/types/thumb_15951118880user.png'}/>
+        <img 
+          src={photoURL || 'https://www.tenforums.com/geek/gars/images/2/types/thumb_15951118880user.png'}
+          alt='profile pic'/>
         <p>{text}</p>
       </div>
     </>
